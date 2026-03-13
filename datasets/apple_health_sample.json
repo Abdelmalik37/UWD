@@ -1,0 +1,21 @@
+[
+  {
+    "sourceName": "Apple Watch",
+    "device_id": "apple-001",
+    "timestamp": "2026-03-02T08:20:00Z",
+    "HKQuantityTypeIdentifierHeartRate": 76,
+    "steps": 1450,
+    "sleep_minutes": 420,
+    "spo2": 98,
+    "calories": 180
+  },
+  {
+    "sourceName": "Apple Watch",
+    "device_id": "apple-001",
+    "timestamp": "2026-03-02T12:20:00Z",
+    "HKQuantityTypeIdentifierHeartRate": 84,
+    "steps": 4250,
+    "activity": 35,
+    "calories": 340
+  }
+]

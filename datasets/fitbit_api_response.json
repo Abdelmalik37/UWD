@@ -1,0 +1,19 @@
+[
+  {
+    "tracker": "fitbit-charge-5",
+    "dateTime": "2026-03-01T07:00:00Z",
+    "bpm": 71,
+    "steps": 1900,
+    "minutesAsleep": 410,
+    "calories": 130
+  },
+  {
+    "tracker": "fitbit-charge-5",
+    "dateTime": "2026-03-01T21:00:00Z",
+    "bpm": 79,
+    "steps": 10300,
+    "minutesAsleep": 0,
+    "activity": 52,
+    "calories": 680
+  }
+]

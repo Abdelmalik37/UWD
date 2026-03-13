@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="UWD">
+  <trk>
+    <name>Morning Walk</name>
+    <trkseg>
+      <trkpt lat="37.4219983" lon="-122.084">
+        <time>2026-03-11T07:00:00Z</time>
+        <ele>5</ele>
+      </trkpt>
+      <trkpt lat="37.4221" lon="-122.085">
+        <time>2026-03-11T07:10:00Z</time>
+        <ele>6</ele>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

@@ -1,0 +1,4 @@
+dateTime,restingHeartRate,steps,sleepDuration,spo2,calories,deviceId
+2026-03-03T06:00:00Z,62,2200,390,97,120,garmin-22
+2026-03-03T11:30:00Z,80,6100,0,98,410,garmin-22
+2026-03-03T18:40:00Z,74,9800,0,97,620,garmin-22

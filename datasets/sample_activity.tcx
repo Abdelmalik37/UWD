@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TrainingCenterDatabase>
+  <Activities>
+    <Activity Sport="Biking">
+      <Id>2026-03-10T06:30:00Z</Id>
+      <Lap StartTime="2026-03-10T06:30:00Z">
+        <Track>
+          <Trackpoint>
+            <Time>2026-03-10T06:30:00Z</Time>
+            <HeartRateBpm>95</HeartRateBpm>
+            <DistanceMeters>1200</DistanceMeters>
+            <Calories>45</Calories>
+          </Trackpoint>
+          <Trackpoint>
+            <Time>2026-03-10T06:40:00Z</Time>
+            <HeartRateBpm>110</HeartRateBpm>
+            <DistanceMeters>2500</DistanceMeters>
+            <Calories>88</Calories>
+          </Trackpoint>
+        </Track>
+      </Lap>
+    </Activity>
+  </Activities>
+</TrainingCenterDatabase>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HealthData locale="en_US">
+  <Record type="HKQuantityTypeIdentifierHeartRate" value="72" unit="count/min" startDate="2026-03-09T08:00:00Z" endDate="2026-03-09T08:01:00Z"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" value="2100" unit="count" startDate="2026-03-09T08:00:00Z" endDate="2026-03-09T08:30:00Z"/>
+  <Record type="HKQuantityTypeIdentifierOxygenSaturation" value="98" unit="%" startDate="2026-03-09T08:15:00Z" endDate="2026-03-09T08:16:00Z"/>
+</HealthData>
