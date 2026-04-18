@@ -1,0 +1,4 @@
+Uid,Sid,Tag,Key,Time,Value,UpdateTime
+10001,900001,daily_fitness,heart_rate,1714300800,"{""bpm"":70,""source"":""resting""}",1714300800
+10001,900002,daily_fitness,heart_rate,1714302600,"{""bpm"":84,""source"":""active""}",1714302600
+10001,900003,daily_fitness,heart_rate,1714306200,"{""bpm"":76,""source"":""recovery""}",1714306200

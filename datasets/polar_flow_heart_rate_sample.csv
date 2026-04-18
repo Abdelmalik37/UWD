@@ -1,0 +1,6 @@
+dateTime,heart_rate,resting_heart_rate,tracker,brand,training_phase
+2022-09-12T00:02:08Z,63,60,1111AAAA,Polar,continuous_heart_rate
+2022-09-12T00:07:08Z,62,60,1111AAAA,Polar,continuous_heart_rate
+2020-01-01T00:41:00+03:00,76,60,1111AAAA,Polar,sleep_heart_rate_sample
+2020-01-01T00:46:00+03:00,77,60,1111AAAA,Polar,sleep_heart_rate_sample
+2020-01-01T00:51:00+03:00,76,60,1111AAAA,Polar,sleep_heart_rate_sample

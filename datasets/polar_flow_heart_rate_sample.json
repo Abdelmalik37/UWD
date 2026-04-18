@@ -1,0 +1,34 @@
+{
+    "source": "Polar AccessLink API v3 official examples",
+    "source_url": "https://www.polar.com/accesslink-api/",
+    "data": [
+        {
+            "timestamp": "2022-09-12T00:02:08Z",
+            "heart_rate": 63,
+            "tracker": "1111AAAA",
+            "brand": "Polar",
+            "training_phase": "continuous_heart_rate"
+        },
+        {
+            "timestamp": "2022-09-12T00:07:08Z",
+            "heart_rate": 62,
+            "tracker": "1111AAAA",
+            "brand": "Polar",
+            "training_phase": "continuous_heart_rate"
+        }
+    ],
+    "continuous_heartrate_example": {
+        "polar_user": "https://polaraccesslink.com/v3/users/627139",
+        "date": "2022-09-12",
+        "heart_rate_samples": [
+            {
+                "heart_rate": 63,
+                "sample_time": "00:02:08"
+            },
+            {
+                "heart_rate": 62,
+                "sample_time": "00:07:08"
+            }
+        ]
+    }
+}
