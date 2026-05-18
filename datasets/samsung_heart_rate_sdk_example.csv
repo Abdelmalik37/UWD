@@ -1,0 +1,2 @@
+source,health_data_type,heart_rate,heart_rate_min,heart_rate_max,start_time,end_time,start_time_iso,end_time_iso
+Samsung Health Android Data API docs,com.samsung.health.heart_rate,147.48181,99.0,124.0,1422457096536,1493922600000,2015-01-28T15:24:56.536Z,2017-05-04T23:50:00.000Z

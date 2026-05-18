@@ -1,0 +1,19 @@
+{
+    "source": "Samsung Health Android Data API documentation",
+    "source_url": "https://developer.samsung.com/health/android/data/api-reference/com/samsung/android/sdk/healthdata/HealthConstants.HeartRate.html",
+    "health_data_type": "com.samsung.health.heart_rate",
+    "binning_data_example": {
+        "heart_rate": 147.48181,
+        "heart_rate_min": 99.0,
+        "heart_rate_max": 124.0,
+        "start_time": 1422457096536,
+        "end_time": 1493922600000
+    },
+    "units": {
+        "heart_rate": "bpm",
+        "heart_rate_min": "bpm",
+        "heart_rate_max": "bpm",
+        "start_time": "unix_ms",
+        "end_time": "unix_ms"
+    }
+}
