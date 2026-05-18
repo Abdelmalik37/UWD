@@ -1,0 +1,22 @@
+[
+  {
+    "type": 10007,
+    "samplePoints": [
+      {
+        "key": "HEART_RATE",
+        "startTime": 1714300800000,
+        "value": "{\"heartRate\":72,\"restingHeartRate\":61,\"deviceCode\":\"HUAWEI_WATCH_GT4\"}"
+      },
+      {
+        "key": "HEART_RATE",
+        "startTime": 1714304400000,
+        "value": "{\"heartRate\":86,\"restingHeartRate\":61,\"deviceCode\":\"HUAWEI_WATCH_GT4\"}"
+      },
+      {
+        "key": "HEART_RATE",
+        "startTime": 1714308000000,
+        "value": "{\"heartRate\":78,\"restingHeartRate\":61,\"deviceCode\":\"HUAWEI_WATCH_GT4\"}"
+      }
+    ]
+  }
+]
