@@ -60,6 +60,42 @@ export default function HistoryPage() {
     }
   }
 
+  const downloadFhir = async () => {
+    if (!selectedId) {
+      setError('Select an upload first.')
+      return
+    }
+
+    try {
+      let bundle = fhir
+      if (!bundle) {
+        const res = await fetchFhir(selectedId)
+        bundle = res.data.fhir_bundle
+        setFhir(bundle)
+      }
+
+      if (!bundle) {
+        setError('No FHIR bundle available to download. Click Convert to FHIR first.')
+        return
+      }
+
+      const jsonText = JSON.stringify(bundle, null, 2)
+      const blob = new Blob([jsonText], { type: 'application/fhir+json' })
+      const url = URL.createObjectURL(blob)
+
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `fhir_bundle_${selectedId}.json`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+
+      URL.revokeObjectURL(url)
+    } catch (e) {
+      setError(e.response?.data?.detail || 'FHIR download failed.')
+    }
+  }
+
   return (
     <div className="grid two-col">
       <section className="card">
@@ -81,6 +117,7 @@ export default function HistoryPage() {
           <button type="button" onClick={loadHistory}>Refresh</button>
           <button type="button" onClick={convertSelected}>Convert to FHIR</button>
           <button type="button" onClick={loadFhir}>Load FHIR</button>
+          <button type="button" onClick={downloadFhir} disabled={!selectedId}>Download FHIR Bundle</button>
         </div>
       </section>
 

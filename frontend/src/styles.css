@@ -110,12 +110,14 @@ pre {
   border-radius: 8px;
   border: 1px solid #d2dde8;
   background: #f8fbfd;
+  color: #111111;
   cursor: pointer;
 }
 
 .list-item.active {
   border-color: #0e4d64;
   background: #e5f3f6;
+  color: #111111;
 }
 
 .button-row {
