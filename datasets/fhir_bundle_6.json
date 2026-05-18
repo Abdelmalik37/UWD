@@ -1,0 +1,195 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-11T15:28:29.444048Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:0dff8be2-9a6f-5aa4-b0d1-4cbf8c1c3b77",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-1",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Patient: Synthetic patient record generated from UWD input.</p></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:uwd",
+            "value": "patient-1"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b91d92d8-8ab0-5ff2-96ca-d12ca9fd94d8",
+      "resource": {
+        "resourceType": "Device",
+        "id": "device-1",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Device: Synthetic source device generated from UWD input.</p></div>"
+        },
+        "manufacturer": "unknown-manufacturer",
+        "identifier": [
+          {
+            "system": "urn:uwd",
+            "value": "unknown-device"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:74aafc8d-5df4-57a5-b53d-9867e38ea77b",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-1",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Observation: Heart rate observation generated from source data.</p></div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "urn:uuid:0dff8be2-9a6f-5aa4-b0d1-4cbf8c1c3b77"
+        },
+        "device": {
+          "reference": "urn:uuid:b91d92d8-8ab0-5ff2-96ca-d12ca9fd94d8"
+        },
+        "performer": [
+          {
+            "reference": "urn:uuid:0dff8be2-9a6f-5aa4-b0d1-4cbf8c1c3b77"
+          }
+        ],
+        "effectiveDateTime": "2026-04-11T15:28:29.443878Z",
+        "valueQuantity": {
+          "value": 147.48181,
+          "unit": "beats/min",
+          "code": "/min",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3fbf4a6d-e6b8-5f05-ae5f-6d6949a2f226",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-2",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Observation: Heart rate observation generated from source data.</p></div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "urn:uuid:0dff8be2-9a6f-5aa4-b0d1-4cbf8c1c3b77"
+        },
+        "device": {
+          "reference": "urn:uuid:b91d92d8-8ab0-5ff2-96ca-d12ca9fd94d8"
+        },
+        "performer": [
+          {
+            "reference": "urn:uuid:0dff8be2-9a6f-5aa4-b0d1-4cbf8c1c3b77"
+          }
+        ],
+        "effectiveDateTime": "2026-04-11T15:28:29.443878Z",
+        "valueQuantity": {
+          "value": 99,
+          "unit": "beats/min",
+          "code": "/min",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:deee85f1-7d53-523f-8b46-3b5ecfbe6c52",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-3",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Observation: Heart rate observation generated from source data.</p></div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "urn:uuid:0dff8be2-9a6f-5aa4-b0d1-4cbf8c1c3b77"
+        },
+        "device": {
+          "reference": "urn:uuid:b91d92d8-8ab0-5ff2-96ca-d12ca9fd94d8"
+        },
+        "performer": [
+          {
+            "reference": "urn:uuid:0dff8be2-9a6f-5aa4-b0d1-4cbf8c1c3b77"
+          }
+        ],
+        "effectiveDateTime": "2026-04-11T15:28:29.443878Z",
+        "valueQuantity": {
+          "value": 124,
+          "unit": "beats/min",
+          "code": "/min",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    }
+  ]
+}
