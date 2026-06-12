@@ -1,27 +1,40 @@
 Dataset provenance notes:
-- garmin_heart_rate_real.tcx: copied from tcxreader test fixture at https://github.com/alenrajsp/tcxreader (real TCX activity with heart-rate trackpoints).
-- garmin_biking_activity_real.tcx: copied from tcxreader test fixture at https://github.com/alenrajsp/tcxreader (real biking TCX with GPS, timing, distance, speed, and cadence-style extensions where available).
-- apple_health_export_real.xml: copied from apple-health-parser test fixture at https://github.com/alxdrcirilo/apple-health-parser (real Apple Health export format).
-- apple_activity_summary_real.csv: copied from https://github.com/tdda/applehealthdata testdata.
-- apple_step_count_real.csv: copied from https://github.com/tdda/applehealthdata testdata.
-- apple_distance_walking_running_real.csv: copied from https://github.com/tdda/applehealthdata testdata.
-- apple_workout_real.csv: copied from https://github.com/tdda/applehealthdata testdata.
-- fitbit_heart_glucose_real_examples.json: official Fitbit Web API example payloads from docs (heart rate + blood glucose).
-- fitbit_daily_activity_real.csv: copied from https://github.com/colinh80/fitbit_data_analysis fitabase_data.
-- fitbit_sleep_real.csv: copied from https://github.com/colinh80/fitbit_data_analysis fitabase_data.
-- fitbit_hourly_calories_real.csv: copied from https://github.com/colinh80/fitbit_data_analysis fitabase_data.
-- fitbit_hourly_intensity_real.csv: copied from https://github.com/colinh80/fitbit_data_analysis fitabase_data.
-- fitbit_weight_log_real.csv: copied from https://github.com/colinh80/fitbit_data_analysis fitabase_data.
-- samsung_health_export_sample.csv: public Samsung Health export sample from https://github.com/bfaure/sHealthParser.
-- samsung_heart_rate_sdk_example.json: official Samsung Health Android Data API example for HeartRate.BINNING_DATA from https://developer.samsung.com/health/android/data/api-reference/com/samsung/android/sdk/healthdata/HealthConstants.HeartRate.html.
-- samsung_heart_rate_sdk_example.csv: CSV conversion of the same official Samsung heart-rate example values.
+- garmin_heart_rate_real.tcx: taken from the tcxreader fixture set: https://github.com/alenrajsp/tcxreader.
+- garmin_biking_activity_real.tcx: taken from the tcxreader fixture set: https://github.com/alenrajsp/tcxreader.
+- apple_health_export_real.xml: taken from apple-health-parser fixtures: https://github.com/alxdrcirilo/apple-health-parser.
+- apple_activity_summary_real.csv: taken from applehealthdata test data: https://github.com/tdda/applehealthdata.
+- apple_step_count_real.csv: taken from applehealthdata test data: https://github.com/tdda/applehealthdata.
+- apple_distance_walking_running_real.csv: taken from applehealthdata test data: https://github.com/tdda/applehealthdata.
+- apple_workout_real.csv: taken from applehealthdata test data: https://github.com/tdda/applehealthdata.
+- fitbit_heart_glucose_real_examples.json: based on Fitbit Web API reference examples: https://dev.fitbit.com/build/reference/web-api.
+- fitbit_daily_activity_real.csv: taken from fitabase_data in fitbit_data_analysis: https://github.com/colinh80/fitbit_data_analysis.
+- fitbit_sleep_real.csv: taken from fitabase_data in fitbit_data_analysis: https://github.com/colinh80/fitbit_data_analysis.
+- fitbit_hourly_calories_real.csv: taken from fitabase_data in fitbit_data_analysis: https://github.com/colinh80/fitbit_data_analysis.
+- fitbit_hourly_intensity_real.csv: taken from fitabase_data in fitbit_data_analysis: https://github.com/colinh80/fitbit_data_analysis.
+- fitbit_weight_log_real.csv: taken from fitabase_data in fitbit_data_analysis: https://github.com/colinh80/fitbit_data_analysis.
+- samsung_health_export_sample.csv: Samsung Health export sample from sHealthParser: https://github.com/bfaure/sHealthParser.
+- samsung_heart_rate_sdk_example.json: Samsung Health Android Data API example for HeartRate.BINNING_DATA: https://developer.samsung.com/health/android/data/api-reference/com/samsung/android/sdk/healthdata/HealthConstants.HeartRate.html.
+- samsung_heart_rate_sdk_example.csv: manual CSV transcription of the same Samsung SDK heart-rate example values.
+- huawei_health_detail_data_template.json: Huawei native export-shape file prepared as a practical example (samplePoints format). Export workflow reference: https://privacy.consumer.huawei.com/tool.
+- xiaomi_hlth_center_fitness_data_template.csv: Xiaomi native export-shape file (Uid,Sid,Tag,Key,Time,Value,UpdateTime) prepared with example heart-rate rows. Export workflow reference: https://account.xiaomi.com/fe/service/account/privacy.
+- amazfit_zepp_activity_run_1698569116_detail_real.json: Zepp/Huami activity detail JSON from zepp-fit-extractor test resources: https://raw.githubusercontent.com/H3llK33p3r/zepp-fit-extractor/main/src/test/resources/json/run_1698569116_detail.json.
+- amazfit_zepp_activity_run_1698569116_summary_real.json: matching Zepp/Huami activity summary JSON from the same source: https://raw.githubusercontent.com/H3llK33p3r/zepp-fit-extractor/main/src/test/resources/json/run_1698569116_summary.json.
+- oura_heartrate_real.json: Oura native heart-rate export JSON from a public sample dataset: https://raw.githubusercontent.com/crystoll/oura-ring/main/data/oura_heartrate.json.
+- oura_2022-03-15T09-41-37_real.json: Oura native multi-section export JSON (activity/readiness/sleep) from the same public sample dataset: https://raw.githubusercontent.com/crystoll/oura-ring/main/data/oura_2022-03-15T09-41-37.json.
+- polar_flow_heart_rate_sample.csv: prepared from Polar AccessLink API v3 example structures: https://www.polar.com/accesslink-api.
+- polar_flow_heart_rate_sample.json: Polar AccessLink API v3 continuous heart-rate example structure: https://www.polar.com/accesslink-api.
 
 Coverage status:
-- Heart rate: Garmin TCX, Fitbit JSON, Apple XML, Samsung (official SDK heart-rate example).
+- Heart rate: Garmin TCX, Fitbit examples, Apple XML, Samsung SDK example, Polar API examples, and one cross-vendor benchmark file.
+- Huawei heart rate: provided in Huawei native samplePoints-style JSON.
+- Xiaomi heart rate: provided in Xiaomi native export-style CSV.
+- Amazfit/Zepp heart rate: provided in native Zepp/Huami JSON activity files.
+- Oura heart rate: provided in native Oura heart-rate JSON export.
+- Note on parsing: Huawei/Xiaomi/Zepp native files include vendor-specific encoded fields, so full metric extraction still needs vendor-specific decoding logic.
 - Activity and workouts: Garmin TCX, Apple workout/activity CSV, Fitbit daily activity and hourly intensity CSV.
 - Steps and distance: Apple step/distance CSV, Fitbit daily activity CSV, Samsung step-count CSV.
 - Sleep: Fitbit sleep CSV.
 - Calories and energy: Apple activity summary CSV, Fitbit daily/hourly calories CSV, Samsung step-count calorie field.
 - Weight/body: Fitbit weight log CSV.
 - Glucose: Fitbit JSON example payload.
-- Blood pressure: still not found in publicly retrievable Garmin/Fitbit/Samsung sample files during this run; needs a user export or authenticated API pull.
+- Blood pressure: not yet included from public Garmin/Fitbit/Samsung samples in this repository.
