@@ -1,13 +1,15 @@
 import json
-import os
 import socket
 import urllib.error
 import urllib.request
 from typing import Any
 
+from app.core.config import settings
 
-OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses"
-DEFAULT_MODEL = "gpt-4.1-mini"
+
+OPENROUTER_CHAT_COMPLETIONS_URL = "https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_SITE_URL = "http://localhost:8000"
+OPENROUTER_APP_TITLE = "UWD Converter API"
 REQUEST_TIMEOUT_SECONDS = 60
 
 AI_SYSTEM_PROMPT = """You are an experienced healthcare data analyst specialized in wearable device monitoring and FHIR resources.
@@ -26,30 +28,17 @@ Instructions:
 - Only use information present in the bundle.
 
 Output Format:
-
-Patient Overview
-
-Vital Sign Summary
-
-Activity Summary
-
-Sleep Summary
-
-Clinical Alerts
-
-Trend Analysis
-
-Overall Summary
-
-Use professional medical language suitable for physicians.
+- Return a single short paragraph of 2-3 sentences maximum.
+- Do not use headings, bullets, markdown, or repeated sections.
+- Keep only the most clinically relevant points.
 """
 
 
-class MissingOpenAIKeyError(RuntimeError):
+class MissingOpenRouterKeyError(RuntimeError):
     pass
 
 
-class OpenAIAPIError(RuntimeError):
+class OpenRouterAPIError(RuntimeError):
     pass
 
 
@@ -81,6 +70,20 @@ def _extract_response_text(data: dict[str, Any]) -> str:
     if data.get("output_text"):
         return data["output_text"].strip()
 
+    choices = data.get("choices", [])
+    if choices:
+        message = choices[0].get("message", {})
+        content = message.get("content")
+        if isinstance(content, str):
+            return content.strip()
+        if isinstance(content, list):
+            text_parts = []
+            for item in content:
+                if isinstance(item, dict) and item.get("type") in {"output_text", "text"} and item.get("text"):
+                    text_parts.append(item["text"])
+            if text_parts:
+                return "\n".join(text_parts).strip()
+
     text_parts = []
     for output in data.get("output", []):
         for content in output.get("content", []):
@@ -91,25 +94,27 @@ def _extract_response_text(data: dict[str, Any]) -> str:
 
 
 def generate_summary(bundle: dict[str, Any]) -> str:
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = settings.openrouter_api_key
     if not api_key:
-        raise MissingOpenAIKeyError("OPENAI_API_KEY environment variable is missing")
+        raise MissingOpenRouterKeyError("OPENROUTER_API_KEY environment variable is missing")
 
     payload = {
-        "model": os.getenv("OPENAI_MODEL", DEFAULT_MODEL),
-        "input": [
+        "model": settings.openrouter_model,
+        "messages": [
             {"role": "system", "content": AI_SYSTEM_PROMPT},
             {"role": "user", "content": build_prompt(bundle)},
         ],
-        "max_output_tokens": 1200,
+        "max_tokens": 220,
     }
 
     request = urllib.request.Request(
-        OPENAI_RESPONSES_URL,
+        OPENROUTER_CHAT_COMPLETIONS_URL,
         data=json.dumps(payload).encode("utf-8"),
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "HTTP-Referer": OPENROUTER_SITE_URL,
+            "X-Title": OPENROUTER_APP_TITLE,
         },
         method="POST",
     )
@@ -119,14 +124,14 @@ def generate_summary(bundle: dict[str, Any]) -> str:
             data = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         error_body = exc.read().decode("utf-8", errors="replace")
-        raise OpenAIAPIError(f"OpenAI API error ({exc.code}): {error_body}") from exc
+        raise OpenRouterAPIError(f"OpenRouter API error ({exc.code}): {error_body}") from exc
     except urllib.error.URLError as exc:
-        raise ConnectionError("Network failure while contacting OpenAI API") from exc
+        raise ConnectionError("Network failure while contacting OpenRouter API") from exc
     except socket.timeout as exc:
-        raise TimeoutError("OpenAI API request timed out") from exc
+        raise TimeoutError("OpenRouter API request timed out") from exc
 
     summary = _extract_response_text(data)
     if not summary:
-        raise OpenAIAPIError("OpenAI API returned an empty summary")
+        raise OpenRouterAPIError("OpenRouter API returned an empty summary")
 
     return summary
