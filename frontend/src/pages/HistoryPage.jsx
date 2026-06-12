@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 
+import AISummary from '../components/AISummary'
 import JsonViewer from '../components/JsonViewer'
+import { generateAISummary } from '../services/aiService'
 import { convertUpload, fetchFhir, fetchHistory, fetchUpload } from '../services/api'
 
 export default function HistoryPage() {
@@ -8,6 +10,9 @@ export default function HistoryPage() {
   const [selectedId, setSelectedId] = useState(null)
   const [detail, setDetail] = useState(null)
   const [fhir, setFhir] = useState(null)
+  const [aiSummary, setAiSummary] = useState('')
+  const [aiSummaryLoading, setAiSummaryLoading] = useState(false)
+  const [aiSummaryError, setAiSummaryError] = useState('')
   const [error, setError] = useState('')
 
   const loadHistory = async () => {
@@ -26,6 +31,8 @@ export default function HistoryPage() {
   const selectUpload = async (id) => {
     setSelectedId(id)
     setFhir(null)
+    setAiSummary('')
+    setAiSummaryError('')
     try {
       const res = await fetchUpload(id)
       setDetail(res.data)
@@ -96,6 +103,37 @@ export default function HistoryPage() {
     }
   }
 
+  const generateSummary = async () => {
+    if (!selectedId) {
+      setAiSummaryError('Select an upload first.')
+      return
+    }
+
+    setAiSummaryLoading(true)
+    setAiSummaryError('')
+
+    try {
+      let bundle = fhir
+      if (!bundle) {
+        const res = await fetchFhir(selectedId)
+        bundle = res.data.fhir_bundle
+        setFhir(bundle)
+      }
+
+      if (!bundle) {
+        setAiSummaryError('No FHIR Bundle available. Click Convert to FHIR first.')
+        return
+      }
+
+      const res = await generateAISummary(bundle)
+      setAiSummary(res.data.summary)
+    } catch (e) {
+      setAiSummaryError(e.response?.data?.detail || 'Unable to generate AI clinical summary.')
+    } finally {
+      setAiSummaryLoading(false)
+    }
+  }
+
   return (
     <div className="grid two-col">
       <section className="card">
@@ -133,7 +171,16 @@ export default function HistoryPage() {
       <section className="card">
         <h2>FHIR Output</h2>
         {fhir ? (
-          <JsonViewer title="FHIR Bundle" value={fhir} />
+          <>
+            <JsonViewer title="FHIR Bundle" value={fhir} />
+            <AISummary
+              summary={aiSummary}
+              loading={aiSummaryLoading}
+              error={aiSummaryError}
+              onGenerate={generateSummary}
+              disabled={!selectedId || !fhir}
+            />
+          </>
         ) : (
           <p>Run conversion or load FHIR to view output.</p>
         )}

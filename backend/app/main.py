@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import router
 from app.db.session import Base, engine
+from app.routes.ai_summary import router as ai_summary_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -17,6 +18,7 @@ app.add_middleware(
 )
 
 app.include_router(router)
+app.include_router(ai_summary_router)
 
 
 @app.get("/")
