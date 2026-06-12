@@ -1,21 +1,21 @@
-const SECTION_TITLES = [
-  'Patient Overview',
-  'Vital Sign Summary',
-  'Activity Summary',
-  'Sleep Summary',
-  'Clinical Alerts',
-  'Trend Analysis',
-  'Overall Summary',
-]
-
-function extractSection(summary, title) {
-  const titles = SECTION_TITLES.map((item) => item.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-  const pattern = new RegExp(`${title}\\s*\\n+([\\s\\S]*?)(?=\\n+(${titles.join('|')})\\s*\\n|$)`, 'i')
-  const match = summary.match(pattern)
-  return match?.[1]?.trim() || 'No specific information available in the generated summary.'
+function cleanSummary(summary) {
+  return summary
+    .replace(/\r\n/g, '\n')
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/^#{1,6}\s*/gm, '')
+    .replace(/^[\s\-•]+/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
 }
 
 export default function AISummary({ summary, loading, error, onGenerate, disabled }) {
+  const shortSummary = cleanSummary(summary || '')
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .slice(0, 3)
+    .join(' ')
+
   return (
     <section className="card ai-summary-card">
       <div className="summary-header">
@@ -39,14 +39,9 @@ export default function AISummary({ summary, loading, error, onGenerate, disable
       )}
 
       {summary && (
-        <div className="summary-grid">
-          {SECTION_TITLES.map((title) => (
-            <article key={title} className="summary-section">
-              <h3>{title}</h3>
-              <p>{extractSection(summary, title)}</p>
-            </article>
-          ))}
-        </div>
+        <article className="summary-section summary-section--single">
+          <p>{shortSummary || 'No specific information available in the generated summary.'}</p>
+        </article>
       )}
     </section>
   )

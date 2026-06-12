@@ -82,3 +82,4 @@ Use files in `datasets/`:
 ## Notes
 - If PostgreSQL is unavailable, backend falls back to SQLite (`uwd_local.db`).
 - Parsing supports JSON, CSV, XML. TCX/GPX are treated as XML.
+- AI summaries use OpenRouter. Set `OPENROUTER_API_KEY` and optionally `OPENROUTER_MODEL` in `backend/.env`.
